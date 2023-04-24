@@ -1,6 +1,15 @@
 <template>
       <div class="container justify-content-center" style="margin:0 auto auto">
         <div class="card justify-content-center" style="border-radius: 20px">
+          <div class="text-center account-logo-box">
+            <div class="mt-2 mb-2">
+              <a href="" class="text-success">
+                <span
+                  ><img src="https://www.solutech.co.ke/wp-content/uploads/2020/10/Solutech-Official-Logo.svg" alt="" height="166" width="200"
+                /></span>
+              </a>
+            </div>
+          </div>
           <div v-if="error" class="alert alert-danger" style="margin: 15px">
             <button type="button" aria-hidden="true" class="close">×</button>
             <span> <b> Failed - </b> {{ errorMessage }}</span>
@@ -12,7 +21,6 @@
           </div>
 
           <div class="card-body">
-            <p class="justify-content-center">REGISTER</p>
             <div style="padding: 10px" v-if="loading">Loading...</div>
 
             <form @submit.prevent="register()">
@@ -56,9 +64,8 @@
         <div class="row mt-5">
           <div class="col-sm-12 text-center">
             <p class="text-muted">
-              Already have account?<router-link to="sign-in" class="text-primary ml-1"
-                ><b>Sign In</b></router-link
-              >
+              Already have account?<RouterLink to="signin" class="text-primary ml-1"
+                ><b>Sign In</b></RouterLink>
             </p>
           </div>
         </div>
@@ -69,6 +76,7 @@
 
 <script>
 import axios from "axios";
+import { RouterLink } from 'vue-router'
 
 export default {
   name: "Register",

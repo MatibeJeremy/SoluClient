@@ -4,9 +4,14 @@ import Register from './components/Register.vue'
 </script>
 
 <template>
-    <div class=".mx-auto">
-      <Register/>
-    </div>
+  <div>
+    <vue-progress-bar></vue-progress-bar>
+
+  <div>
+    <notifications></notifications>
+    <router-view></router-view>
+  </div>
+  </div>
 </template>
 
 <style scoped>
