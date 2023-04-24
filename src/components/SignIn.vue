@@ -8,7 +8,11 @@
               <div class="mt-2 mb-2">
                 <a href="" class="text-success">
                   <span
-                    ><img src="https://www.solutech.co.ke/wp-content/uploads/2020/10/Solutech-Official-Logo.svg" alt="" height="166" width="200"
+                    ><img
+                      src="https://www.solutech.co.ke/wp-content/uploads/2020/10/Solutech-Official-Logo.svg"
+                      alt=""
+                      height="166"
+                      width="200"
                   /></span>
                 </a>
               </div>
@@ -28,10 +32,10 @@
                     <input
                       class="form-control"
                       type="text"
-                      name="email"
-                      style="marginBottom:10px"
+                      name="email_address"
+                      style="marginbottom: 10px"
                       required=""
-                      v-model="email"
+                      v-model="email_address"
                       placeholder="Email"
                     />
                   </div>
@@ -40,7 +44,7 @@
                     <input
                       class="form-control"
                       type="password"
-                      style="marginBottom:10px"
+                      style="marginbottom: 10px"
                       required=""
                       v-model="password"
                       name="password"
@@ -52,13 +56,14 @@
                     <div class="custom-control custom-checkbox checkbox-success">
                       <input
                         type="checkbox"
-                        style="marginRight:4px"
+                        style="marginright: 4px"
                         class="custom-control-input"
                         id="checkbox-signin"
                         checked
                       />
                       <label class="custom-control-label" for="checkbox-signin"
-                        >Remember me</label>
+                        >Remember me</label
+                      >
                     </div>
                   </div>
 
@@ -134,7 +139,7 @@ export default {
   data() {
     return {
       loading: false,
-      email: "",
+      email_address: "",
       password: "",
       error: null,
       errorMessage: null,
@@ -144,8 +149,8 @@ export default {
     submitLogin() {
       this.loading = true;
       axios
-        .post("auth/login", {
-          email: this.email,
+        .post("http://127.0.0.1:8000/api/login", {
+          email_address: this.email_address,
           password: this.password,
         })
         .then((response) => {
@@ -169,6 +174,10 @@ export default {
           } else {
             this.errorMessage = error.response.data.error.message;
           }
+          setTimeout(() => {
+            this.errorMessage = null;
+            this.error = false;
+          }, 4000);
         });
     },
   },
