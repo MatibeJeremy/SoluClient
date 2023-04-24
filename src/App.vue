@@ -5,6 +5,7 @@ import Register from './components/Register.vue'
 
 <template>
   <div>
+    <navbar></navbar>
     <vue-progress-bar></vue-progress-bar>
 
   <div>

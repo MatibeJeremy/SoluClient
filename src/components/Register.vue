@@ -74,6 +74,19 @@
     </div>
 </template>
 
+<style>
+.container {
+  padding: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    width: 400px;
+    margin-left: 44%;
+  }
+}
+</style>
+
 <script>
 import axios from "axios";
 import { RouterLink } from 'vue-router'

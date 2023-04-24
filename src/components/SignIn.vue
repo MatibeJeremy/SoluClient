@@ -2,7 +2,7 @@
   <div class="mt-10 mb-10">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-10 col-lg-10 col-xl-10">
+        <div class="col-md-12 col-lg-12 col-xl-12 justify-content-center">
           <div class="card" style="border-radius: 20px">
             <div class="text-center account-logo-box">
               <div class="mt-2 mb-2">
@@ -112,6 +112,19 @@
     </div>
   </div>
 </template>
+
+<style>
+.container {
+  padding: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    width: 400px;
+    margin-left: 44%;
+  }
+}
+</style>
 
 <script>
 import axios from "axios";
