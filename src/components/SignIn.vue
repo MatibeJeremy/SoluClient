@@ -159,22 +159,16 @@ export default {
         })
         .then((response) => {
           this.loading = false;
-          router.push("/");
-          // login user, store the token and redirect to dashboard
-          const { setData } = mapActions(["setData"]);
-          const saveData = (data) => {
-            setData(data);
-          };
-          localStorage.setItem("token", response);
-          localStorage.setItem("currentUser", JSON.stringify(response.data.user));
-          localStorage.setItem("user_id", JSON.stringify(response.data.user.id));
-          localStorage.setItem("role", JSON.stringify(response.data.user.roles));
           console.log(response.data.access_token);
-          this.$router.push({ name: "Home" });
+          // login user, store the token and redirect to dashboard
+          this.$store.dispatch('login',response.data.access_token);
+          // console.log(response.data.access_token);
+          this.$router.push({ name: "Dash" });
         })
         .catch((error) => {
+          console.log("here");
           this.loading = false;
-          console.log(error.response.data.error.message);
+          console.log(error);
           this.error = true;
           this.errorMessage = error.response.data.error.message;
           if (this.errorMessage === null) {
