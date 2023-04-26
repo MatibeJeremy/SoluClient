@@ -11,6 +11,7 @@ export default createStore({
   },
   actions: {
     login({ commit }, token) {
+      localStorage.setItem('token', JSON.stringify(token))
       return commit('setToken', token)      
     }
   },

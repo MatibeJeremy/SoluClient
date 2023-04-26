@@ -1,7 +1,11 @@
 <template>
-<div style="padding:20px; margin:auto">
-    <h1>TASKS</h1>
-</div>
+    <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
   <div class="task-container" v-for="task in tasks" :key="task.id">
     <div class="task-header">
       <h4>{{ task.id }}</h4>
@@ -30,11 +34,21 @@
 </template>
 
 <style scoped>
+  
 .task-container {
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 20px;
   padding: 10px;
+  margin-top: 20px;
+  @media screen and (min-width: 768px) {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 120px;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 900px;
+  }
 }
 
 .task-header {
