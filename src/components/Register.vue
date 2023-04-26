@@ -89,7 +89,6 @@
 
 <script>
 import axios from "axios";
-import { RouterLink } from 'vue-router'
 
 export default {
   name: "Register",

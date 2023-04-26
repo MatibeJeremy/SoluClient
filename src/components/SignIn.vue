@@ -69,7 +69,7 @@
 
                   <div class="form-group text-center mt-4 pt-2">
                     <div class="col-sm-12">
-                      <router-link to="/forgot"
+                      <router-link to="/register"
                         ><a href="" class="text-muted"
                           ><i class="fa fa-lock mr-1"></i> Forgot your password?</a
                         ></router-link
@@ -133,6 +133,9 @@
 
 <script>
 import axios from "axios";
+import { useRouter } from "vue-router";
+import { mapActions } from "vuex";
+
 export default {
   name: "sign-in",
   components: {},
@@ -147,6 +150,7 @@ export default {
   },
   methods: {
     submitLogin() {
+      const router = useRouter();
       this.loading = true;
       axios
         .post("http://127.0.0.1:8000/api/login", {
@@ -155,14 +159,18 @@ export default {
         })
         .then((response) => {
           this.loading = false;
+          router.push("/");
           // login user, store the token and redirect to dashboard
-          store.commit("loginUser");
-          localStorage.setItem("token", response.data.access_token);
+          const { setData } = mapActions(["setData"]);
+          const saveData = (data) => {
+            setData(data);
+          };
+          localStorage.setItem("token", response);
           localStorage.setItem("currentUser", JSON.stringify(response.data.user));
           localStorage.setItem("user_id", JSON.stringify(response.data.user.id));
           localStorage.setItem("role", JSON.stringify(response.data.user.roles));
           console.log(response.data.access_token);
-          this.$router.push({ name: "dashboard" });
+          this.$router.push({ name: "Home" });
         })
         .catch((error) => {
           this.loading = false;
